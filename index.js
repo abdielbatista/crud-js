@@ -4,44 +4,44 @@ const server = express();
 
 server.use(express.json());
 
-const cursos = ['FullSatack', 'Dev Games', 'HTML'];
+const musicas = ['Mensagem apagada', 'Fulminante', 'Sinais'];
 
 //retorna um curso
-server.get('/cursos/:index', (req, res) => {
+server.get('/musicas/:index', (req, res) => {
     const { index } = req.params;
 
-    return res.json(cursos[index])
+    return res.json(musicas[index])
 });
 
-//retornar todos os cursos
-server.get('/cursos', (req, res) => {
-    return res.json(cursos)
+//retornar todos os musicas
+server.get('/musicas', (req, res) => {
+    return res.json(musicas)
 });
 
 //criar um curso
-server.post('/cursos', (req, res) => {
+server.post('/musicas', (req, res) => {
     const {name} = req.body;
-    cursos.push(name);
+    musicas.push(name);
 
-    return res.json(cursos);
+    return res.json(musicas);
 })
 
 //atualizar
-server.put('/cursos/:index', (req, res) => {
+server.put('/musicas/:index', (req, res) => {
     const { index } = req.params;
     const { name } = req.body;
 
-    cursos[index] = name;
+    musicas[index] = name;
 
-    return res.json(cursos);
+    return res.json(musicas);
 })
 
 //deletar
-server.delete('/cursos/:index', (req, res) => {
+server.delete('/musicas/:index', (req, res) => {
     const { index } = req.params;
 
-    cursos.splice(index, 1);
-    return res.json({message: "O xx foi deletado"};)
+    musicas.splice(index, 1);
+    return res.json({message: "A musica foi deletada"});
 });
 
 server.listen(3000);
